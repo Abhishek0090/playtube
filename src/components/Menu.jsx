@@ -6,6 +6,17 @@ import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import HistoryIcon from '@mui/icons-material/History';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import SportsBaseballIcon from '@mui/icons-material/SportsBaseball';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import MovieCreationIcon from '@mui/icons-material/MovieCreation';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
+import SettingsIcon from '@mui/icons-material/Settings';
+import FlagIcon from '@mui/icons-material/Flag';
+import HelpIcon from '@mui/icons-material/Help';
+import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 
 const Container = styled.div`
     flex:1;
@@ -65,11 +76,41 @@ const Menu = () => {
                 <Item>
                     <SubscriptionsIcon />  Subscriptions
                 </Item>
-                <hr />
                 <Item>
-                    {/* <SubscriptionsIcon />  Subscriptions */}
-
-
+                    <VideoLibraryIcon />
+                </Item>
+                <Item>
+                    <HistoryIcon />
+                </Item>
+                <Item>
+                    <LibraryMusicIcon />
+                </Item>
+                <Item>
+                    <SportsBaseballIcon />
+                </Item>
+                <Item>
+                    <SportsEsportsIcon />
+                </Item>
+                <Item>
+                    <MovieCreationIcon />
+                </Item>
+                <Item>
+                    <NewspaperIcon />
+                </Item>
+                <Item>
+                    <LiveTvIcon />
+                </Item>
+                <Item>
+                    <SettingsIcon />
+                </Item>
+                <Item>
+                    <FlagIcon />
+                </Item>
+                <Item>
+                    <HelpIcon />
+                </Item>
+                <Item>
+                    <SettingsBrightnessIcon />
                 </Item>
             </Wrapper>
         </Container>
