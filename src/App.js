@@ -34,9 +34,10 @@ function App() {
             <Wrapper>
               <Routes>
                 <Route index path="/" element={<Home />} />
-                <Route path="video">
+                {/* <Route path="video">
                   <Route path=":id" element={<Video />} />
-                </Route>
+                </Route> */}
+                <Route path="/video" element={<Video/>}/>
               </Routes>
             </Wrapper>
           </Main>

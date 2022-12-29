@@ -1,7 +1,8 @@
+ 
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -48,18 +49,21 @@ const Title = styled.h1`
 
 const ChannelName = styled.h2`
   font-size: 14px;
-  color: grey;
-  margin: 8px 0px;
+
+  color: ${({ theme }) => theme.textSoft};
+    margin: 8px 0px;
 `;
 
 const Info = styled.div`
   font-size: 14px;
-  color: grey;
+  
+  color: ${({ theme }) => theme.textSoft};
 `;
 
 
 const Card = () => {
     return (
+        <Link to="/video"  style={{ textDecoration: "none" }}>
         <Container>
             <Image src="https://images.pexels.com/photos/9170333/pexels-photo-9170333.jpeg?auto=compress&cs=tinysrgb&w=600" alt="image" />
                   
@@ -80,6 +84,7 @@ const Card = () => {
             </Details>
 
         </Container>
+        </Link>
     )
 }
 
