@@ -1,9 +1,21 @@
-import React from 'react'
+
+import React, { useEffect, useState } from "react";
+import styled from 'styled-components';
+import Card from "../components/Card";
+
+
+const Container = styled.div`
+    
+`;
+
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
+    const [videos, setVideos] = useState([]);
+    return (
+        <Container>
+           <Card/>
+        </Container>
+    )
 }
 
 export default Home

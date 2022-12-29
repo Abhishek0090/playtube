@@ -4,9 +4,7 @@ import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 import { darkTheme, lightTheme } from "./utils/Theme";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Signin from "./pages/Signin";
-import { Search } from "@mui/icons-material";
+import Home from "./pages/Home"; 
 import Video from "./pages/Video";
 
 const Container = styled.div`
@@ -31,7 +29,7 @@ function App() {
       <Container>
         <BrowserRouter>
           <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
-          <Main >
+          <Main>
             <Navbar />
             <Wrapper>
               <Routes>
