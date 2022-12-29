@@ -17,12 +17,12 @@ const Main = styled.div`
  `;
 
 const Wrapper = styled.div`
-    
+    padding :30px 30px;
 `;
 
 function App() {
 
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
