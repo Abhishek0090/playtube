@@ -17,17 +17,22 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import FlagIcon from '@mui/icons-material/Flag';
 import HelpIcon from '@mui/icons-material/Help';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 const Container = styled.div`
     flex:1;
-    background-color  : #202020;
-    height : 100vh; 
-    color : white;
+    background-color  :  ${({ theme }) => theme.bgLighter};
+    height : 100%; 
+    font-size: 14px;
+    color : ${({ theme }) => theme.text};
+    top: 0;
     
+    position : sticky;
 `;
 
 const Wrapper = styled.div`
-    padding : 18px 26px;
+    padding : 18px 30px; 
+    
 `;
 
 const Logo = styled.div`
@@ -49,11 +54,40 @@ const Item = styled.div`
     align-items : center;
     gap : 20px; 
     cursor : pointer;
-    padding:12px;
+    padding:7.5px 0px;
 `;
 
+const Hr = styled.hr`
+     margin: 15px 0px;
+     border: 0.5px solid $({theme})=>theme.soft;
+`;
 
-const Menu = () => {
+const Login = styled.div`
+
+`;
+
+const Button = styled.button`
+  padding: 5px 15px;
+  background-color: transparent;
+  border: 1px solid #3ea6ff;
+  color: #3ea6ff;
+  border-radius: 3px;
+  font-weight: 500;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+`;
+
+const Title = styled.h2`
+     font-size: 14px;
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 20px;
+`;
+
+const Menu = ({ darkMode, setDarkMode }) => {
 
     return (
         <Container>
@@ -63,12 +97,7 @@ const Menu = () => {
                     PlayTube
                 </Logo>
                 <Item>
-                    <lord-icon
-                        src="https://cdn.lordicon.com/slduhdil.json"
-                        trigger="hover"
-                        colors="primary:#ffffff"
-                        style={{ width: "25px", height: "25px", color: "white" }}>
-                    </lord-icon>  Home
+                    <HomeIcon />  Home
                 </Item>
                 <Item>
                     <ExploreIcon />  Explore
@@ -76,41 +105,57 @@ const Menu = () => {
                 <Item>
                     <SubscriptionsIcon />  Subscriptions
                 </Item>
+                <Hr />
                 <Item>
-                    <VideoLibraryIcon />
+                    <VideoLibraryIcon /> Library
                 </Item>
                 <Item>
-                    <HistoryIcon />
+                    <HistoryIcon /> History
+                </Item>
+                <Hr />
+                <Login> 
+                        Sign in to like Videos , Comment and Subscribe
+                   
+
+                </Login>
+                <Button>
+                    <AccountCircleOutlinedIcon />
+                    SIGN IN
+                </Button>
+                <Hr />
+                <Title>
+                    Best of PlayTube
+                </Title>
+                <Item>
+                    <LibraryMusicIcon /> Music
                 </Item>
                 <Item>
-                    <LibraryMusicIcon />
+                    <SportsBaseballIcon /> Sports
                 </Item>
                 <Item>
-                    <SportsBaseballIcon />
+                    <SportsEsportsIcon /> Games
                 </Item>
                 <Item>
-                    <SportsEsportsIcon />
+                    <MovieCreationIcon /> Movies
                 </Item>
                 <Item>
-                    <MovieCreationIcon />
+                    <NewspaperIcon />  News
                 </Item>
                 <Item>
-                    <NewspaperIcon />
+                    <LiveTvIcon />  Live
+                </Item>
+                <Hr />
+                <Item>
+                    <SettingsIcon />   Settings
                 </Item>
                 <Item>
-                    <LiveTvIcon />
+                    <FlagIcon />    Report
                 </Item>
                 <Item>
-                    <SettingsIcon />
+                    <HelpIcon />    Help
                 </Item>
-                <Item>
-                    <FlagIcon />
-                </Item>
-                <Item>
-                    <HelpIcon />
-                </Item>
-                <Item>
-                    <SettingsBrightnessIcon />
+                <Item onClick={() => { setDarkMode(!darkMode) }} >
+                    <SettingsBrightnessIcon />   {darkMode ? "Light" : "Dark"} Mode
                 </Item>
             </Wrapper>
         </Container>
