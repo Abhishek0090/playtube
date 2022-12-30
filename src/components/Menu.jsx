@@ -21,18 +21,21 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-    flex:1;
+    width:10px
     background-color  :  ${({ theme }) => theme.bgLighter};
-    height : 100%; 
+    
+    height: calc(100vh - 56px); 
     font-size: 14px;
     color : ${({ theme }) => theme.text};
     top: 0;
     
-    position : sticky;
-`;
-
-const Wrapper = styled.div`
+    `;
+    
+    const Wrapper = styled.div`
     padding : 18px 30px; 
+   
+    
+    
     
 `;
 
@@ -99,11 +102,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
     return (
         <Container>
             <Wrapper>
-                <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-                    <Logo>
-                        <Img src={youtube} alt='youtube' />
-                        PlayTube
-                    </Logo>
+                <Link to="/" style={{ textDecoration: "none", color: "inherit" }}> 
                     <Item>
                         <HomeIcon />  Home
                     </Item>

@@ -8,6 +8,12 @@ import Home from "./pages/Home";
 import Video from "./pages/Video";
 import Hamburger from "./components/Hamburger";
 import MenuIcon from '@mui/icons-material/Menu';
+import {
+  createBrowserRouter,
+  Navigate,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 import SignIn from "./pages/SignIn";
 
@@ -37,46 +43,108 @@ const Main = styled.div`
   background-color : ${({ theme }) => theme.bg};
  `;
 
-const Wrapper = styled.div`
-    padding :30px 30px;
-    background-color : ${({ theme }) => theme.bgLighter};
+const Wrapper = styled.span`
+     
+    background-color : ${({ theme }) => theme.bgLighter}; 
+    
+    flex : 1
 `;
 
+const SubWrapper = styled.div`
+     
+    background-color : ${({ theme }) => theme.bgLighter}; 
+    padding : 12px;
+    flex : 6
+`;
+
+const Div = styled.div`
+
+display : flex;
+flex : 7
+
+`;
 function App() {
 
   const [darkMode, setDarkMode] = useState(false);
 
   const [hamburger, sethamburger] = useState(null);
 
-  return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+
+  const Layout = () => {
+    return (
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
-        <BrowserRouter>
-          <Hamburgercss onClick={() => sethamburger(!hamburger)} style={{ cursor: "pointer" }}>
+      <Main>
+         <Navbar />
+         <Div>
 
-            <MenuIcon />
-          </Hamburgercss>
-
-          {
-            hamburger ? '' :
-              <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
-          }
-          <Main>
-            <Navbar />
-            <Wrapper>
-              <Routes>
-                <Route index path="/" element={<Home />} />
-                <Route path="/signin" element={<SignIn/>} />
-
-                <Route path="video">
-                  <Route path=":id" element={<Video />} />
-                </Route>
-              </Routes>
-            </Wrapper>
+          <Wrapper>
+            <Menu/>
+          </Wrapper>
+            <SubWrapper> 
+            <Outlet/>
+            </SubWrapper>
+         </Div>
           </Main>
-        </BrowserRouter>
       </Container>
-    </ThemeProvider>
+      </ThemeProvider>
+    )
+  }
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element:  
+        <Layout />, 
+      children: [   // children for deciding paths using outlets
+        {
+          path: "/",
+          element: <Home />
+        },
+        {
+          path: "/video/:id",
+          element: <Video/>
+        },
+        {
+          path : "/signin",
+          element  : <SignIn/>
+        }
+
+      ]
+    },
+    
+  ]);
+
+  return (
+    <RouterProvider router={router} />
+    // <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    //   <Container>
+    //     <BrowserRouter>
+    //       <Hamburgercss onClick={() => sethamburger(!hamburger)} style={{ cursor: "pointer" }}>
+
+    //         <MenuIcon />
+    //       </Hamburgercss>
+
+    //       {
+    //         hamburger ? '' :
+    //           <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
+    //       }
+    //       <Main>
+    //         <Navbar />
+    //         <Wrapper>
+    //           <Routes>
+    //             <Route index path="/" element={<Home />} />
+    //             <Route path="/signin" element={<SignIn />} />
+
+    //             <Route path="video">
+    //               <Route path=":id" element={<Video />} />
+    //             </Route>
+    //           </Routes>
+    //         </Wrapper>
+    //       </Main>
+    //     </BrowserRouter>
+    //   </Container>
+    // </ThemeProvider>
   );
 }
 
