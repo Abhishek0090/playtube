@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
@@ -16,11 +16,13 @@ import {
 } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 import SignIn from "./pages/SignIn";
+import { DarkModeContext } from "./content/DarkModeContext";
 
 const Container = styled.div`
 display : flex;
 background-color : ${({ theme }) => theme.bgLighter};
  `;
+
 
 const Hamburgercss = styled.div`
   
@@ -54,7 +56,8 @@ const SubWrapper = styled.div`
      
     background-color : ${({ theme }) => theme.bgLighter}; 
     padding : 12px;
-    flex : 6
+    flex : 6;
+
 `;
 
 const Div = styled.div`
@@ -67,26 +70,34 @@ function App() {
 
   const [darkMode, setDarkMode] = useState(false);
 
-  const [hamburger, sethamburger] = useState(null);
+  const { toggle, hamburger } = useContext(DarkModeContext)
 
 
   const Layout = () => {
     return (
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      <Container>
-      <Main>
-         <Navbar />
-         <Div>
+        <Container>
+          <Main>
+            <Navbar />
+            <Div>
 
-          <Wrapper>
-            <Menu/>
-          </Wrapper>
-            <SubWrapper> 
-            <Outlet/>
-            </SubWrapper>
-         </Div>
+
+              {hamburger ? <>
+                <Wrapper style={{ display: "none" }}><Menu darkMode={darkMode} setDarkMode = {setDarkMode}/></Wrapper>
+                <SubWrapper>
+                  <Outlet />
+                </SubWrapper>
+              </> : <>
+                <Wrapper><Menu darkMode={darkMode} setDarkMode = {setDarkMode}/></Wrapper>
+                <SubWrapper>
+                  <Outlet />
+                </SubWrapper>
+              </>
+              }
+
+            </Div>
           </Main>
-      </Container>
+        </Container>
       </ThemeProvider>
     )
   }
@@ -94,8 +105,8 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element:  
-        <Layout />, 
+      element:
+        <Layout />,
       children: [   // children for deciding paths using outlets
         {
           path: "/",
@@ -103,16 +114,16 @@ function App() {
         },
         {
           path: "/video/:id",
-          element: <Video/>
+          element: <Video />
         },
         {
-          path : "/signin",
-          element  : <SignIn/>
+          path: "/signin",
+          element: <SignIn />
         }
 
       ]
     },
-    
+
   ]);
 
   return (

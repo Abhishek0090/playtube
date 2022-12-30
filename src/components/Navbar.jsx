@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 import youtube from "../img/youtube-logo-png-2067.png";
+import { DarkModeContext } from "../content/DarkModeContext";
 
 
 const Container = styled.div`
@@ -77,11 +78,13 @@ const Hamburgercss = styled.div`
     font-size: 14px;
     color : ${({ theme }) => theme.text};
     top: 12px;
-    left : 5px;
+    left : 0px;
     display:flex;
     align-items :center;
     justify-content : center;
     flex-direction  :column; 
+
+    
 `;
 
 
@@ -89,9 +92,11 @@ const Logo = styled.div`
     display:flex; 
     align-items: center;
     justfity-content  :center;
-    gap:5px;
-    font-weight : bold;
-    margin-bottom : 25px;
+    gap:10px;
+    margin-left :25px;
+    font-weight : bold; 
+    color : ${({ theme }) => theme.text};
+       
 `;
 
 const Img = styled.img`
@@ -103,13 +108,15 @@ const Img = styled.img`
 const Navbar = () => {
 
 
-  const [hamburger, sethamburger] = useState(null);
+  // const [hamburger, sethamburger] = useState(null);
+
+  const {darkMode , toggle , hamburger} = useContext(DarkModeContext);
 
   return (
     
     <Container>
         <Wrapper>
-          <Hamburgercss onClick={() => sethamburger(!hamburger)} style={{ cursor: "pointer" }}>
+          <Hamburgercss onClick={toggle} style={{ cursor: "pointer" }}>
             <MenuIcon />
           </Hamburgercss>
                 <Logo>

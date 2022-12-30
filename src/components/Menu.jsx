@@ -29,10 +29,11 @@ const Container = styled.div`
     color : ${({ theme }) => theme.text};
     top: 0;
     
+    postion : sticky;
     `;
     
     const Wrapper = styled.div`
-    padding : 18px 30px; 
+    padding : 10px 20px; 
    
     
     
