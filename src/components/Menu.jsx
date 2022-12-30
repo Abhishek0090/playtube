@@ -18,6 +18,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import HelpIcon from '@mui/icons-material/Help';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     flex:1;
@@ -55,6 +56,10 @@ const Item = styled.div`
     gap : 20px; 
     cursor : pointer;
     padding:7.5px 0px;
+
+    &:hover{
+        background-color  : ${({ theme }) => theme.soft};
+    }
 `;
 
 const Hr = styled.hr`
@@ -89,74 +94,81 @@ const Title = styled.h2`
 
 const Menu = ({ darkMode, setDarkMode }) => {
 
+
+
     return (
         <Container>
             <Wrapper>
-                <Logo>
-                    <Img src={youtube} alt='youtube' />
-                    PlayTube
-                </Logo>
-                <Item>
-                    <HomeIcon />  Home
-                </Item>
-                <Item>
-                    <ExploreIcon />  Explore
-                </Item>
-                <Item>
-                    <SubscriptionsIcon />  Subscriptions
-                </Item>
-                <Hr />
-                <Item>
-                    <VideoLibraryIcon /> Library
-                </Item>
-                <Item>
-                    <HistoryIcon /> History
-                </Item>
-                <Hr />
-                <Login> 
+                <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+                    <Logo>
+                        <Img src={youtube} alt='youtube' />
+                        PlayTube
+                    </Logo>
+                    <Item>
+                        <HomeIcon />  Home
+                    </Item>
+                    <Item>
+                        <ExploreIcon />  Explore
+                    </Item>
+                    <Item>
+                        <SubscriptionsIcon />  Subscriptions
+                    </Item>
+                    <Hr />
+                    <Item>
+                        <VideoLibraryIcon /> Library
+                    </Item>
+                    <Item>
+                        <HistoryIcon /> History
+                    </Item>
+                    <Hr />
+                    <Login>
                         Sign in to like Videos , Comment and Subscribe
-                   
 
-                </Login>
-                <Button>
-                    <AccountCircleOutlinedIcon />
-                    SIGN IN
-                </Button>
-                <Hr />
-                <Title>
-                    Best of PlayTube
-                </Title>
-                <Item>
-                    <LibraryMusicIcon /> Music
-                </Item>
-                <Item>
-                    <SportsBaseballIcon /> Sports
-                </Item>
-                <Item>
-                    <SportsEsportsIcon /> Games
-                </Item>
-                <Item>
-                    <MovieCreationIcon /> Movies
-                </Item>
-                <Item>
-                    <NewspaperIcon />  News
-                </Item>
-                <Item>
-                    <LiveTvIcon />  Live
-                </Item>
-                <Hr />
-                <Item>
-                    <SettingsIcon />   Settings
-                </Item>
-                <Item>
-                    <FlagIcon />    Report
-                </Item>
-                <Item>
-                    <HelpIcon />    Help
-                </Item>
-                <Item onClick={() => { setDarkMode(!darkMode) }} >
-                    <SettingsBrightnessIcon />   {darkMode ? "Light" : "Dark"} Mode
-                </Item>
+
+                    </Login>
+                    <Link to="/signin" style={{ textDecoration: "none" }}>
+
+                    <Button>
+                        <AccountCircleOutlinedIcon />
+                        SIGN IN
+                    </Button>
+                    </Link>
+                    <Hr />
+                    <Title>
+                        Best of PlayTube
+                    </Title>
+                    <Item>
+                        <LibraryMusicIcon /> Music
+                    </Item>
+                    <Item>
+                        <SportsBaseballIcon /> Sports
+                    </Item>
+                    <Item>
+                        <SportsEsportsIcon /> Games
+                    </Item>
+                    <Item>
+                        <MovieCreationIcon /> Movies
+                    </Item>
+                    <Item>
+                        <NewspaperIcon />  News
+                    </Item>
+                    <Item>
+                        <LiveTvIcon />  Live
+                    </Item>
+                    <Hr />
+                    <Item>
+                        <SettingsIcon />   Settings
+                    </Item>
+                    <Item>
+                        <FlagIcon />    Report
+                    </Item>
+                    <Item>
+                        <HelpIcon />    Help
+                    </Item>
+                    <Item onClick={() => { setDarkMode(!darkMode) }} >
+                        <SettingsBrightnessIcon />   {darkMode ? "Light" : "Dark"} Mode
+                    </Item>
+                </Link>
             </Wrapper>
         </Container>
     )
