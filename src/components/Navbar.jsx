@@ -119,10 +119,12 @@ const Navbar = () => {
           <Hamburgercss onClick={toggle} style={{ cursor: "pointer" }}>
             <MenuIcon />
           </Hamburgercss>
+          <Link to="/" style={{ textDecoration: "none" }}>
                 <Logo>
                         <Img src={youtube} alt='youtube' />
                         PlayTube
                     </Logo>
+          </Link>
           <Search>
             <Input placeholder="Search.." />
             <SearchOutlinedIcon style={{ cursor: "pointer" }} />

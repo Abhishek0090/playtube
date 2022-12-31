@@ -22,17 +22,16 @@ import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     width:10px
-    background-color  :  ${({ theme }) => theme.bgLighter};
-    
+    background-color  :  ${({ theme }) => theme.bgLighter}; 
     height: calc(100vh - 56px); 
     font-size: 14px;
     color : ${({ theme }) => theme.text};
-    top: 0;
-    
-    postion : sticky;
+    top: 56px;
+    overflow-y : auto;
+    position  : sticky;
     `;
-    
-    const Wrapper = styled.div`
+
+const Wrapper = styled.div`
     padding : 10px 20px; 
    
     
@@ -103,7 +102,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
     return (
         <Container>
             <Wrapper>
-                <Link to="/" style={{ textDecoration: "none", color: "inherit" }}> 
+                <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
                     <Item>
                         <HomeIcon />  Home
                     </Item>
@@ -128,10 +127,10 @@ const Menu = ({ darkMode, setDarkMode }) => {
                     </Login>
                     <Link to="/signin" style={{ textDecoration: "none" }}>
 
-                    <Button>
-                        <AccountCircleOutlinedIcon />
-                        SIGN IN
-                    </Button>
+                        <Button>
+                            <AccountCircleOutlinedIcon />
+                            SIGN IN
+                        </Button>
                     </Link>
                     <Hr />
                     <Title>

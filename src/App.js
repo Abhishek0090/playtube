@@ -49,14 +49,15 @@ const Wrapper = styled.span`
      
     background-color : ${({ theme }) => theme.bgLighter}; 
     
-    flex : 1
+    flex : 1;
 `;
 
 const SubWrapper = styled.div`
      
     background-color : ${({ theme }) => theme.bgLighter}; 
-    padding : 12px;
+    padding : 30px;
     flex : 6;
+    
 
 `;
 
@@ -80,15 +81,13 @@ function App() {
           <Main>
             <Navbar />
             <Div>
-
-
               {hamburger ? <>
-                <Wrapper style={{ display: "none" }}><Menu darkMode={darkMode} setDarkMode = {setDarkMode}/></Wrapper>
+                <Wrapper style={{ display: "none" }}><Menu darkMode={darkMode} setDarkMode={setDarkMode} /></Wrapper>
                 <SubWrapper>
                   <Outlet />
                 </SubWrapper>
               </> : <>
-                <Wrapper><Menu darkMode={darkMode} setDarkMode = {setDarkMode}/></Wrapper>
+                <Wrapper><Menu darkMode={darkMode} setDarkMode={setDarkMode} /></Wrapper>
                 <SubWrapper>
                   <Outlet />
                 </SubWrapper>

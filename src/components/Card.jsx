@@ -56,30 +56,29 @@ const Info = styled.div`
 `;
 
 const Card = ({ type }) => {
-    return (
-        <Link to="/video/test" style={{ textDecoration: "none" }}>
-            <Container type={type}>
-                <Image type={type} src="https://images.pexels.com/photos/9170333/pexels-photo-9170333.jpeg?auto=compress&cs=tinysrgb&w=600" alt="image" />
+  return (
+    <Link to="/video/test" style={{ textDecoration: "none" }}>
+      <Container type={type}>
+        <Image type={type} src="https://images.pexels.com/photos/9170333/pexels-photo-9170333.jpeg?auto=compress&cs=tinysrgb&w=600" alt="image" />
 
-                <Details type={type}>
-                    <ChannelImage type={type} src='https://images.pexels.com/photos/9170333/pexels-photo-9170333.jpeg?auto=compress&cs=tinysrgb&w=600' alt="channelimage" />
-                    <Texts>
+        <Details type={type}>
+          <ChannelImage type={type} src='https://images.pexels.com/photos/9170333/pexels-photo-9170333.jpeg?auto=compress&cs=tinysrgb&w=600' alt="channelimage" />
+          <Texts>
+            <Title>
+              Hi bro
+            </Title>
+            <ChannelName>
+              Abhishek
+            </ChannelName>
+            <Info>
+              999 views • 1 day
+            </Info>
+          </Texts>
+        </Details>
 
-                        <Title>
-                            Hi bro
-                        </Title>
-                        <ChannelName>
-                            Abhishek
-                        </ChannelName>
-                        <Info>
-                            999 views • 1 day
-                        </Info>
-                    </Texts>
-                </Details>
-
-            </Container>
-        </Link>
-    )
+      </Container>
+    </Link>
+  )
 }
 
 export default Card

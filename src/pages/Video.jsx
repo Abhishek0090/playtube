@@ -143,8 +143,8 @@ const Video = () => {
       <Content>
         <VideoWrapper>
           {/* <VideoFrame src="https://youtu.be/f8UNcMCbhk0" controls /> */}
-          <iframe width="100%" height="501" src="https://www.youtube.com/embed/f8UNcMCbhk0" title="How to Host a Website for Free? What are the best Free Web Hosting options?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-        </VideoWrapper>
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XmZrCRRxxXE?list=RDXmZrCRRxxXE" title="Kehlani - Gangsta (Lyrics) | Gangsta Harley Quinn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+            </VideoWrapper>
         <Title>How Are You?</Title>
         <Details>
           <Info>1,00,12,000 views • Dec 30,2022</Info>
