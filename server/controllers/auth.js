@@ -1,21 +1,27 @@
-import auth from "../models/auth.js";
-import mongoose from "mongoose"; 
+
+import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import User from "../models/User.js";
 
-export const signup = (req, res) => {
+export const signup = async (req, res, next) => {
+    try {
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(req.body.password, salt);
+        const newUser = new User({ ...req.body, password: hash });
 
-    console.log(req.body); 
-    // try {
-    //     const newUser = new User();
-    // } catch (error) {
-    //     //todo
-    // }
-
-}
+        await newUser.save();
+        res.status(200).send("User has been created!");
+    } catch (err) {
+        next(err);
+    }
+};
 
 export const signin = (req, res) => {
+    try {
 
+    } catch (err) {
+        next(err);
+    }
 }
 
 
