@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const Container = styled.div`
-  width: ${(props) => props.type !== "sm" && "360px"};
+  width: ${(props) => props.type !== "sm" && "320px"};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
   cursor: pointer;
   display: ${(props) => props.type === "sm" && "flex"};
@@ -19,6 +19,12 @@ const Image = styled.img`
   background-color: #999;
   flex: 1;
   border-radius : 10px;
+
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(112 139 187);
+-moz-box-shadow: 10px 10px 15px 0px rgba(112 139 187);
+box-shadow: 10px 10px 15px 0px rgba(112 139 187);
+
+
 `;
 
 const Details = styled.div`
