@@ -51,9 +51,9 @@ app.use((err, req, res, next) => {
 
 
 
-app.get("/", (req, res) => {
-    res.send("Hi bro")
-})
+// app.get("/", (req, res) => {
+//     res.send("Hi bro")
+// })
 
 app.listen(8800, () => {
     connect()
