@@ -109,7 +109,6 @@ export const sub = async (req, res, next) => {
                 return await Video.find({ userId: channelId });
             })
         );
-
         res.status(200).json(list.flat().sort((a, b) => b.createdAt - a.createdAt));
     } catch (err) {
         next(err);
@@ -117,7 +116,7 @@ export const sub = async (req, res, next) => {
 };
 
 export const getByTag = async (req, res, next) => {
-    const tags = req.query.tags.split(",");
+    const tags = req.query.tags?.split(","); 
     try {
         const videos = await Video.find({ tags: { $in: tags } }).limit(20);
         res.status(200).json(videos);
