@@ -20,9 +20,9 @@ const Image = styled.img`
   flex: 1;
   border-radius : 10px;
 
-  -webkit-box-shadow: 10px 10px 15px 0px rgba(112 139 187);
+  ${'' /* -webkit-box-shadow: 10px 10px 15px 0px rgba(112 139 187);
 -moz-box-shadow: 10px 10px 15px 0px rgba(112 139 187);
-box-shadow: 10px 10px 15px 0px rgba(112 139 187);
+box-shadow: 10px 10px 15px 0px rgba(112 139 187); */}
 
 
 `;
