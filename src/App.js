@@ -109,7 +109,16 @@ function App() {
       children: [   // children for deciding paths using outlets
         {
           path: "/",
-          element: <Home />
+          index  :true,
+          element: <Home type="random" />
+        },
+        {
+          path: "/trends", 
+          element: <Home type="trend" />
+        },
+        {
+          path: "/sub", 
+          element: <Home type="sub" />
         },
         {
           path: "/video/:id",
