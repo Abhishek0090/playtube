@@ -117,7 +117,7 @@ function App() {
           element: <Home type="trend" />
         },
         {
-          path: "/sub", 
+          path: "/subcriptions", 
           element: <Home type="sub" />
         },
         {
