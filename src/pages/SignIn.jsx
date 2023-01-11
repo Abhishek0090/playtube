@@ -85,9 +85,9 @@ const Signin = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button  >Sign in</Button>
+        <Button>Sign in</Button>
         <Title>or</Title>
-        <Button  >Signin with Google</Button>
+        <Button >Signin with Google</Button>
         <Title>or</Title>
         <Input
           placeholder="username"
