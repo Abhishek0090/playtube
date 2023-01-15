@@ -59,11 +59,7 @@ const Button = styled.button`
   align-items: center;
   gap: 5px;
 `;
-
-const User = styled.div`
-`;
-
-
+ 
 const Avatar = styled.img`
   width: 32px;
   height: 32px;
@@ -105,38 +101,59 @@ const Img = styled.img`
 
 `;
 
+const User =  styled.div`
+    display : flex;
+    align-items : center;
+    gap : 10px;
+    font-weight : 500;
+    color : ${({theme})=>theme.text} ;
+
+`;
+
+ 
+
 const Navbar = () => {
+
+  const { currentUser } = useSelector(state => state.user)
 
 
   // const [hamburger, sethamburger] = useState(null);
 
-  const {darkMode , toggle , hamburger} = useContext(DarkModeContext);
+  const { darkMode, toggle, hamburger } = useContext(DarkModeContext);
 
   return (
-    
+
     <Container>
-        <Wrapper>
-          <Hamburgercss onClick={toggle} style={{ cursor: "pointer" }}>
-            <MenuIcon />
-          </Hamburgercss>
-          <Link to="/" style={{ textDecoration: "none" }}>
-                <Logo>
-                        <Img src={youtube} alt='youtube' />
-                        PlayTube
-                    </Logo>
-          </Link>
-          <Search>
-            <Input placeholder="Search.." />
-            <SearchOutlinedIcon style={{ cursor: "pointer" }} />
-          </Search>
-        <Link to="/signin" style={{ textDecoration: "none" }}>
+      <Wrapper>
+        <Hamburgercss onClick={toggle} style={{ cursor: "pointer" }}>
+          <MenuIcon />
+        </Hamburgercss>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Logo>
+            <Img src={youtube} alt='youtube' />
+            PlayTube
+          </Logo>
+        </Link>
+        <Search>
+          <Input placeholder="Search.." />
+          <SearchOutlinedIcon style={{ cursor: "pointer" }} />
+        </Search>
+        {currentUser ? (
+          <User>
+
+            <VideoCallOutlinedIcon />
+            <Avatar/>
+            {currentUser.name}
+          </User>
+        ) : <Link to="/signin" style={{ textDecoration: "none" }}>
           <Button>
             <AccountCircleOutlinedIcon />
             SIGN IN
           </Button>
-    </Link>
-        </Wrapper>
-      </Container>
+        </Link>
+        }
+    </Wrapper>
+    </Container >
   )
 }
 

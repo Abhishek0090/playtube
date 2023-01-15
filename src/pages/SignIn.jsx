@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
+import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
 
 const Container = styled.div`
 display: flex;
@@ -71,14 +72,24 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handlesignin = async (e) => {
+  const { currentUser } = useSelector(state => state.user)
+
+
+  const dispatch = useDispatch();
+
+  const handlelogin = async (e) => {
     e.preventDefault();
+
+    dispatch(loginStart());
 
     try {
       const res = await axios.post('/auth/signin', { name, password });
+      dispatch(loginSuccess(res.data));
       console.log(res.data);
     } catch (error) {
-
+      dispatch(loginFailure());
+      //tumsa koi pyaara koi masoom nhi hai
+      
     }
 
   }
@@ -87,6 +98,7 @@ const Signin = () => {
     e.preventDefault();
 
   }
+
 
 
   return (
@@ -103,7 +115,7 @@ const Signin = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button onClick={handlesignin}>Sign in</Button>
+        <Button onClick={handlelogin}>Sign in</Button>
         <Title>or</Title>
         <Button >Signin with Google</Button>
         <Title>or</Title>

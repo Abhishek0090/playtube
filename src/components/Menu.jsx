@@ -97,6 +97,7 @@ const Title = styled.h2`
 
 const Menu = ({ darkMode, setDarkMode }) => {
 
+    const { currentUser } = useSelector(state => state.user)
 
 
     return (
@@ -126,11 +127,11 @@ const Menu = ({ darkMode, setDarkMode }) => {
                         <HistoryIcon /> History
                     </Item>
                     <Hr />
-                    <Login>
+                    { 
+                        <Login>
                         Sign in to like Videos , Comment and Subscribe
 
 
-                    </Login>
                     <Link to="/signin" style={{ textDecoration: "none" }}>
 
                         <Button>
@@ -138,6 +139,8 @@ const Menu = ({ darkMode, setDarkMode }) => {
                             SIGN IN
                         </Button>
                     </Link>
+                    </Login>
+                    }
                     <Hr />
                     <Title>
                         Best of PlayTube
