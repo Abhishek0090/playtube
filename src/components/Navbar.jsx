@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import youtube from "../img/youtube-logo-png-2067.png";
 import { DarkModeContext } from "../content/DarkModeContext";
+import { useSelector } from "react-redux";
 
 
 const Container = styled.div`
@@ -142,7 +143,7 @@ const Navbar = () => {
           <User>
 
             <VideoCallOutlinedIcon />
-            <Avatar/>
+            <Avatar src={currentUser.img}/>
             {currentUser.name}
           </User>
         ) : <Link to="/signin" style={{ textDecoration: "none" }}>

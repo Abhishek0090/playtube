@@ -19,6 +19,8 @@ import HelpIcon from '@mui/icons-material/Help';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 
 const Container = styled.div`
     width:10px
@@ -127,21 +129,21 @@ const Menu = ({ darkMode, setDarkMode }) => {
                         <HistoryIcon /> History
                     </Item>
                     <Hr />
-                    { 
-                        <Login>
-                        Sign in to like Videos , Comment and Subscribe
-
-
-                    <Link to="/signin" style={{ textDecoration: "none" }}>
-
-                        <Button>
-                            <AccountCircleOutlinedIcon />
-                            SIGN IN
-                        </Button>
-                    </Link>
-                    </Login>
+                    {!currentUser &&
+                        <>
+                            <Login>
+                                Sign in to like videos, comment, and subscribe.
+                                <Link to="signin" style={{ textDecoration: "none" }}>
+                                    <Button>
+                                        <AccountCircleOutlinedIcon />
+                                        SIGN IN
+                                    </Button>
+                                </Link>
+                            </Login>
+                            <Hr />
+                        </>
                     }
-                    <Hr />
+
                     <Title>
                         Best of PlayTube
                     </Title>
