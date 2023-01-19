@@ -8,10 +8,11 @@ import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined';
 import AddTaskOutlinedIcon from '@mui/icons-material/AddTaskOutlined';
 import Comments from "../components/Comments";
 import Card from "../components/Card";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { format } from "timeago.js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSuccess } from "../redux/videoSlice";
 
 const Container = styled.div`
     display: flex;
@@ -125,9 +126,33 @@ const Recommendation = styled.div`
 
 const Video = () => {
 
-  const { currentUser } = useSelector(state => state.user)
+  const { currentUser } = useSelector((state) => state.user);
 
-  
+  const { currentVideo } = useSelector((state) => state.video);
+
+  const dispatch = useDispatch();
+
+  const path = useLocation().pathname.split("/")[2];
+ 
+
+  const [channel, setChannel] = useState({});
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const videoRes = await axios.get(`/videos/find/${path}`);
+        const channelRes = await axios.get(
+          `/users/find/${videoRes.data.userId}`
+        );
+        setChannel(channelRes.data);
+        dispatch(fetchSuccess(videoRes.data));
+        console.log(videoRes)
+      } catch (err) { }
+    };
+    fetchData();
+  }, [path, dispatch]);
+
 
   const [like, setLike] = useState(null);
   const [subcribe, setSub] = useState(null);
@@ -148,10 +173,11 @@ const Video = () => {
   return (
     <Container>
       <Content>
-        <VideoWrapper>
-          {/* <VideoFrame src="https://youtu.be/f8UNcMCbhk0" controls /> */}
-          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XmZrCRRxxXE?list=RDXmZrCRRxxXE" title="Kehlani - Gangsta (Lyrics) | Gangsta Harley Quinn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
-            </VideoWrapper>
+        <VideoWrapper> 
+          <VideoFrame src={currentVideo?.videoUrl} controls />
+       
+          {/* <iframe width="100%" height="500" src="https://www.youtube.com/embed/XmZrCRRxxXE?list=RDXmZrCRRxxXE" title="Kehlani - Gangsta (Lyrics) | Gangsta Harley Quinn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+        </VideoWrapper>
         <Title>How Are You?</Title>
         <Details>
           <Info>1,00,12,000 views • Dec 30,2022</Info>

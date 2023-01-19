@@ -117,9 +117,8 @@ const Navbar = () => {
 
   const { currentUser } = useSelector(state => state.user)
 
-  console.log(currentUser.img);
-
-  // const [hamburger, sethamburger] = useState(null);
+  
+  
 
   const { darkMode, toggle, hamburger } = useContext(DarkModeContext);
 
@@ -144,7 +143,7 @@ const Navbar = () => {
           <User>
 
             <VideoCallOutlinedIcon />
-            <Avatar src={currentUser.img}/>
+            <Avatar src={currentUser?.img} alt={currentUser.img}/>
             {currentUser.name}
           </User>
         ) : <Link to="/signin" style={{ textDecoration: "none" }}>

@@ -6,6 +6,7 @@ import { darkTheme, lightTheme } from "./utils/Theme";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Video from "./pages/Video";
+import Search from "./pages/Search";
 import Hamburger from "./components/Hamburger";
 import MenuIcon from '@mui/icons-material/Menu';
 import {
@@ -109,16 +110,21 @@ function App() {
       children: [   // children for deciding paths using outlets
         {
           path: "/",
-          index  :true,
+          index: true,
           element: <Home type="random" />
         },
         {
-          path: "/trends", 
+          path: "/trends",
           element: <Home type="trend" />
         },
         {
-          path: "/subcriptions", 
+          path: "/subcriptions",
           element: <Home type="sub" />
+        }, {
+
+          path: "/search",
+          element: <Search />
+
         },
         {
           path: "/video/:id",
