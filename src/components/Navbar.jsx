@@ -117,6 +117,7 @@ const Navbar = () => {
 
   const { currentUser } = useSelector(state => state.user)
 
+  console.log(currentUser.img);
 
   // const [hamburger, sethamburger] = useState(null);
 

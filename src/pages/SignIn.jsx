@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
-
+import { async } from "@firebase/util";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 
@@ -77,12 +77,12 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { currentUser } = useSelector(state => state.user)
 
-
-  const dispatch = useDispatch();
 
   const handlelogin = async (e) => {
     e.preventDefault();
@@ -129,7 +129,6 @@ const Signin = () => {
       });
   };
 
-
   return (
     <Container>
       <Wrapper>
@@ -161,7 +160,7 @@ const Signin = () => {
         <Button onClick={handlesignup} >Sign up</Button>
       </Wrapper>
       <More>
-        English(USA)
+        English(INDIA)
         <Links>
           <Link>Help</Link>
           <Link>Privacy</Link>

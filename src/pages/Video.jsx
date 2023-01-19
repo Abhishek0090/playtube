@@ -9,6 +9,9 @@ import AddTaskOutlinedIcon from '@mui/icons-material/AddTaskOutlined';
 import Comments from "../components/Comments";
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { format } from "timeago.js";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
     display: flex;
@@ -121,6 +124,10 @@ const Recommendation = styled.div`
 `;
 
 const Video = () => {
+
+  const { currentUser } = useSelector(state => state.user)
+
+  
 
   const [like, setLike] = useState(null);
   const [subcribe, setSub] = useState(null);
