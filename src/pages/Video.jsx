@@ -13,6 +13,8 @@ import axios from "axios";
 import { format } from "timeago.js";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSuccess } from "../redux/videoSlice";
+import Recommendation from "../components/Recommendation";
+
 
 const Container = styled.div`
     display: flex;
@@ -119,10 +121,10 @@ const VideoFrame = styled.video`
   object-fit: cover;
 `;
 
-const Recommendation = styled.div`
-  flex :2;
-  color: ${({ theme }) => theme.textSoft};
-`;
+// const Recommendation = styled.div`
+//   flex :2;
+//   color: ${({ theme }) => theme.textSoft};
+// `;
 
 const Video = () => {
 
@@ -133,7 +135,7 @@ const Video = () => {
   const dispatch = useDispatch();
 
   const path = useLocation().pathname.split("/")[2];
- 
+
 
   const [channel, setChannel] = useState({});
 
@@ -147,7 +149,8 @@ const Video = () => {
         );
         setChannel(channelRes.data);
         dispatch(fetchSuccess(videoRes.data));
-        console.log(videoRes)
+        console.log(videoRes);
+        console.log(videoRes.data.img);
       } catch (err) { }
     };
     fetchData();
@@ -173,20 +176,20 @@ const Video = () => {
   return (
     <Container>
       <Content>
-        <VideoWrapper> 
-          <VideoFrame src={currentVideo?.videoUrl} controls />
-       
-          {/* <iframe width="100%" height="500" src="https://www.youtube.com/embed/XmZrCRRxxXE?list=RDXmZrCRRxxXE" title="Kehlani - Gangsta (Lyrics) | Gangsta Harley Quinn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
+        <VideoWrapper>
+          {/* <VideoFrame src={currentVideo?.videoUrl} controls /> */}
+
+          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XmZrCRRxxXE?list=RDXmZrCRRxxXE" title="Kehlani - Gangsta (Lyrics) | Gangsta Harley Quinn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </VideoWrapper>
-        <Title>How Are You?</Title>
+        <Title>{currentVideo.title}</Title>
         <Details>
-          <Info>1,00,12,000 views • Dec 30,2022</Info>
+          <Info>{currentVideo.views} views • {format(currentVideo.createdAt)}</Info>
           <Buttons>
             <Button onClick={handleLike}>
-              {like ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}{" "} 123
+              {currentVideo.likes?.includes(currentUser?._id) ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}{" "} {currentVideo.likes?.length}
             </Button>
             <Button onClick={handleDislike}>
-              {dislike ? <ThumbDownIcon /> : <ThumbDownOutlinedIcon />} Dislike
+              {currentVideo.dislikes?.includes(currentUser?._id) ? <ThumbDownIcon /> : <ThumbDownOutlinedIcon />} Dislike
             </Button>
             <Button>
               <ReplyOutlinedIcon style={{ transform: "scaleX(-1)" }} /> Share
@@ -202,37 +205,23 @@ const Video = () => {
           <ChannelInfo>
             <Image src="https://i.kym-cdn.com/entries/icons/original/000/026/152/gigachad.jpg" />
             <ChannelDetail>
-              <ChannelName>Abhishek</ChannelName>
-              <ChannelCounter>100k subscribers</ChannelCounter>
-              <Description>hi bro whatsup how you doing</Description>
+              <ChannelName>{channel.name}</ChannelName>
+              <ChannelCounter>{channel.subscribers}</ChannelCounter>
+              <Description>{currentVideo.desc}</Description>
             </ChannelDetail>
           </ChannelInfo>
           <Subscribe onClick={handleSub}>
-            {subcribe
+            {currentUser.subscribedUsers?.includes(channel._id)
               ? "SUBSCRIBED"
               : "SUBSCRIBE"}
           </Subscribe>
         </Channel>
         <Hr />
 
-        <Comments />
+        <Comments videoId={currentVideo._id} />
       </Content>
 
-      <Recommendation>
-
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-
-      </Recommendation>
+      <Recommendation tags={currentVideo.tags} />
     </Container>
   )
 }
