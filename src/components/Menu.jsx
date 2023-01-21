@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import youtube from "../img/youtube-logo-png-2067.png";
 
@@ -20,6 +20,7 @@ import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { DarkModeContext } from '../content/DarkModeContext';
 
 
 const Container = styled.div`
@@ -97,10 +98,12 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-const Menu = ({ darkMode, setDarkMode }) => {
+const Menu = ( ) => {
 
     const { currentUser } = useSelector(state => state.user)
 
+
+    const {darkMode , toggle, setToggle } = useContext(DarkModeContext);
 
     return (
         <Container>
@@ -175,7 +178,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
                     <Item>
                         <HelpIcon />    Help
                     </Item>
-                    <Item onClick={() => { setDarkMode(!darkMode) }} >
+                    <Item onClick={toggle}>
                         <SettingsBrightnessIcon />   {darkMode ? "Light" : "Dark"} Mode
                     </Item>
                 </Link>

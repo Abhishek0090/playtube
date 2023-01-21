@@ -70,9 +70,9 @@ flex : 7
 `;
 function App() {
 
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
 
-  const { toggle, hamburger } = useContext(DarkModeContext)
+  const {darkMode , setDarkMode, toggle, hamburger } = useContext(DarkModeContext)
 
 
   const Layout = () => {

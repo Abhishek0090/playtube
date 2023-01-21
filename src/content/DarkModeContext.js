@@ -10,9 +10,8 @@ export const DarkModeContextProvider = ({children})=>{
     
   const [hamburger, sethamburger] = useState(null);
 
-    const toggle = ()=>{
-        setDarkMode(!darkMode);
-        sethamburger(!hamburger);
+    const toggle = ()=>{ 
+        setDarkMode(!darkMode); 
     };
 
     useEffect(() => { 
