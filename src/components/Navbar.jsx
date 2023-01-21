@@ -3,13 +3,14 @@ import styled from "styled-components";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 
 
 import youtube from "../img/youtube-logo-png-2067.png";
 import { DarkModeContext } from "../content/DarkModeContext";
 import { useSelector } from "react-redux";
+import Upload from "./Upload";
 
 
 const Container = styled.div`
@@ -60,7 +61,7 @@ const Button = styled.button`
   align-items: center;
   gap: 5px;
 `;
- 
+
 const Avatar = styled.img`
   width: 32px;
   height: 32px;
@@ -102,59 +103,66 @@ const Img = styled.img`
 
 `;
 
-const User =  styled.div`
+const User = styled.div`
     display : flex;
     align-items : center;
     gap : 10px;
     font-weight : 500;
-    color : ${({theme})=>theme.text} ;
+    color : ${({ theme }) => theme.text} ;
 
 `;
 
- 
+
 
 const Navbar = () => {
 
+
+  const navigate = useNavigate()
+
   const { currentUser } = useSelector(state => state.user)
 
-  
-  
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+
 
   const { darkMode, toggle, hamburger } = useContext(DarkModeContext);
 
   return (
+    <>
+      <Container>
+        <Wrapper>
+          <Hamburgercss onClick={toggle} style={{ cursor: "pointer" }}>
+            <MenuIcon />
+          </Hamburgercss>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Logo>
+              <Img src={youtube} alt='youtube' />
+              PlayTube
+            </Logo>
+          </Link>
+          <Search>
+            <Input placeholder="Search.." onChange={(e) => setQ(e.target.value)} />
 
-    <Container>
-      <Wrapper>
-        <Hamburgercss onClick={toggle} style={{ cursor: "pointer" }}>
-          <MenuIcon />
-        </Hamburgercss>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <Logo>
-            <Img src={youtube} alt='youtube' />
-            PlayTube
-          </Logo>
-        </Link>
-        <Search>
-          <Input placeholder="Search.." />
-          <SearchOutlinedIcon style={{ cursor: "pointer" }} />
-        </Search>
-        {currentUser ? (
-          <User>
+            <SearchOutlinedIcon style={{ cursor: "pointer" }} onClick={() => navigate(`/search?q=${q}`)} />
+          </Search>
+          {currentUser ? (
+            <User>
 
-            <VideoCallOutlinedIcon />
-            <Avatar src={currentUser?.img} alt={currentUser.img}/>
-            {currentUser.name}
-          </User>
-        ) : <Link to="/signin" style={{ textDecoration: "none" }}>
-          <Button>
-            <AccountCircleOutlinedIcon />
-            SIGN IN
-          </Button>
-        </Link>
-        }
-    </Wrapper>
-    </Container >
+              <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
+              <Avatar src={currentUser?.img} alt={currentUser.img} />
+              {currentUser.name}
+            </User>
+          ) : <Link to="/signin" style={{ textDecoration: "none" }}>
+            <Button>
+              <AccountCircleOutlinedIcon />
+              SIGN IN
+            </Button>
+          </Link>
+          }
+        </Wrapper>
+      </Container >
+      {open && <Upload setOpen={setOpen} />}
+    </>
   )
 }
 

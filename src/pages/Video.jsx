@@ -158,11 +158,11 @@ const Video = () => {
     fetchData();
   }, [path, dispatch]);
 
- 
+
 
   const handleLike = async () => {
     await axios.put(`/users/like/${currentVideo._id}`);
-    
+
     dispatch(like(currentUser._id));
   };
   const handleDislike = async () => {
@@ -207,7 +207,7 @@ const Video = () => {
         <Hr />
         <Channel>
           <ChannelInfo>
-            <Image src="https://i.kym-cdn.com/entries/icons/original/000/026/152/gigachad.jpg" />
+            <Image src={channel?.img} />
             <ChannelDetail>
               <ChannelName>{channel?.name}</ChannelName>
               <ChannelCounter>{channel?.subscribers} subscribers</ChannelCounter>

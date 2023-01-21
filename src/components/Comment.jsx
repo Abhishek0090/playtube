@@ -55,6 +55,7 @@ const Comment = ({ comment }) => {
 
 
   return (
+
     <Container>
       <Avatar src={channel.img} />
       <Details>
@@ -64,6 +65,7 @@ const Comment = ({ comment }) => {
         <Text>{comment.desc}</Text>
       </Details>
     </Container>
+
   )
 }
 
