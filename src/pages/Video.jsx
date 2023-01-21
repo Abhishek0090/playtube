@@ -181,9 +181,9 @@ const Video = () => {
     <Container>
       <Content>
         <VideoWrapper>
-          {/* <VideoFrame src={currentVideo?.videoUrl} controls /> */}
+          <VideoFrame src={currentVideo?.videoUrl} controls />
 
-          <iframe width="100%" height="500" src="https://www.youtube.com/embed/XmZrCRRxxXE?list=RDXmZrCRRxxXE" title="Kehlani - Gangsta (Lyrics) | Gangsta Harley Quinn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          {/* <iframe width="100%" height="500" src="https://www.youtube.com/embed/XmZrCRRxxXE?list=RDXmZrCRRxxXE" title="Kehlani - Gangsta (Lyrics) | Gangsta Harley Quinn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
         </VideoWrapper>
         <Title>{currentVideo?.title}</Title>
         <Details>
@@ -210,7 +210,7 @@ const Video = () => {
             <Image src="https://i.kym-cdn.com/entries/icons/original/000/026/152/gigachad.jpg" />
             <ChannelDetail>
               <ChannelName>{channel?.name}</ChannelName>
-              <ChannelCounter>{channel?.subscribers}</ChannelCounter>
+              <ChannelCounter>{channel?.subscribers} subscribers</ChannelCounter>
               <Description>{currentVideo?.desc}</Description>
             </ChannelDetail>
           </ChannelInfo>
