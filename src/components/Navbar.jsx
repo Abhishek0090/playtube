@@ -112,7 +112,38 @@ const User = styled.div`
 
 `;
 
+const Option = styled.div`
+  display:flex;
+  flex-direction  : column;
+  width : 100px;
+  height : 100px;   
+`;
 
+const list = styled.ul`
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+  textDecoration  : none;
+  border :  2px solid black;
+`;
+
+const listoption = styled.li`
+   display : flex;
+  flex-direction : column;
+
+ 
+`;
+
+const Logoutbutton  = styled.button`
+  border-radius  :10px;
+  background : black;
+  color : white;
+  cursor : pointer;
+  width  : 80px;
+  height : 40px;
+   
+`;
+ 
 
 const Navbar = () => {
 
@@ -145,13 +176,20 @@ const Navbar = () => {
 
             <SearchOutlinedIcon style={{ cursor: "pointer" }} onClick={() => navigate(`/search?q=${q}`)} />
           </Search>
-          {currentUser ? (
-            <User>
+          {currentUser ? (<>
 
+            <User>
               <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
               <Avatar src={currentUser?.img} alt={currentUser.img} />
               {currentUser.name}
+            
+ 
+            <Logoutbutton>
+              Logout
+            </Logoutbutton>
             </User>
+            
+          </>
           ) : <Link to="/signin" style={{ textDecoration: "none" }}>
             <Button>
               <AccountCircleOutlinedIcon />
@@ -160,7 +198,7 @@ const Navbar = () => {
           </Link>
           }
         </Wrapper>
-      </Container >
+      </Container>
       {open && <Upload setOpen={setOpen} />}
     </>
   )

@@ -24,16 +24,17 @@ const connect = () => {
     })
 }
 
-
-
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
 
 app.use("/api/auth", authRoutes);
+
 app.use("/api/users", userRoutes);
+
 app.use("/api/videos", videoRoutes);
+
 app.use("/api/comments", commentRoutes);
 
 
@@ -47,9 +48,6 @@ app.use((err, req, res, next) => {
         message,
     });
 });
-
-
-
 
 // app.get("/", (req, res) => {
 //     res.send("Hi bro")
