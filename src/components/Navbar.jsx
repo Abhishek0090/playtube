@@ -182,6 +182,25 @@ const Navbar = () => {
     setAnchorEl();
   };
 
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+
+    dispatch(logout());
+
+    try {
+      const res = await axios.post('/auth/signout');
+      dispatch(logoutSuccess(res.data));
+      console.log(res.data);
+      navigate('/')
+    } catch (error) {
+      dispatch(logoutFailure());
+      //tumsa koi pyaara koi masoom nhi hai
+
+    }
+
+  }
+
   return (
     <>
       <Container>
@@ -276,7 +295,7 @@ const Navbar = () => {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
