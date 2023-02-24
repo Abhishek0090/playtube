@@ -5,13 +5,13 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
+import { logoutFailure, logout, loginStart, logoutSuccess } from "../redux/userSlice";
 
-
-
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 import youtube from "../img/youtube-logo-png-2067.png";
-import { DarkModeContext } from "../content/DarkModeContext";
-import { useSelector } from "react-redux";
+import { DarkModeContext } from "../content/DarkModeContext"; 
 import Upload from "./Upload";
 
  
@@ -169,7 +169,7 @@ const Navbar = () => {
 
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
-
+  const dispatch = useDispatch(); 
 
   const { darkMode, toggle, hamburger } = useContext(DarkModeContext);
 
