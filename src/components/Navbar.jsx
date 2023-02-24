@@ -179,7 +179,7 @@ const Navbar = () => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl();
   };
 
   return (
@@ -204,7 +204,7 @@ const Navbar = () => {
 
             <User>
               <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
-              <Avatar src={currentUser?.img} alt={currentUser.img} />
+              {/* <Avatar src={currentUser?.img} alt={currentUser.img} /> */}
               {currentUser.name}
         
     <React.Fragment>
