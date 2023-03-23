@@ -90,12 +90,12 @@ const Signin = () => {
     dispatch(loginStart());
 
     try {
-      const res = await axios.post('/auth/signin', { name, password });
+      const res = await axios.post('/auth/signin', { email, password });
       dispatch(loginSuccess(res.data));
       console.log(res.data);
       navigate('/')
     } catch (error) {
-      dispatch(loginFailure()); 
+      dispatch(loginFailure());
 
     }
 
@@ -103,6 +103,19 @@ const Signin = () => {
 
   const handlesignup = async (e) => {
     e.preventDefault();
+ 
+
+    dispatch(loginStart());
+
+    try {
+      const res = await axios.post('/auth/signup', { name, email, password });
+      dispatch(loginSuccess(res.data));
+      console.log(res.data);
+      navigate('/')
+    } catch (error) {
+      dispatch(loginFailure());
+
+    }
 
   }
 
@@ -134,8 +147,8 @@ const Signin = () => {
         <Title>Sign in</Title>
         <SubTitle>to continue to PlayTube</SubTitle>
         <Input
-          placeholder="username"
-          onChange={(e) => setName(e.target.value)}
+          placeholder="email"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <Input
           type="password"
