@@ -95,8 +95,7 @@ const Signin = () => {
       console.log(res.data);
       navigate('/')
     } catch (error) {
-      dispatch(loginFailure());
-      //tumsa koi pyaara koi masoom nhi hai
+      dispatch(loginFailure()); 
 
     }
 
